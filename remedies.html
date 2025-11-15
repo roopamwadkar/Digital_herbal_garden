@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <title>Digital Herbal Garden</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Home Remedies</h1>
+        <p>Discover effective remedies for common health issues</p>
+    </header>
+    <nav class="navbar">
+      <a href="Herbal.html">Home</a>
+      <a href="plants.html">Herbal Plants</a>
+      <a href="doctor.html">Doctor Info & Contact</a>
+      <a href="feedback.html">Feedback</a>
+    </nav>
+<hr></hr>
+
+<div class="tab-button-container">
+    <button class="tablinks" onclick="openTab(event, 'remedies')">Home Remedies</button>
+  </div>
+   
+<!-- Home Remedies Section -->
+<div class="tabcontent" id="remedies">
+    <h2>🌿 Natural Home Remedies</h2>
+  
+    <!-- Remedy Category Tabs -->
+    <div class="tab-buttons">
+      <button class="tablinks active" onclick="openCategory(event, 'cold')">🤧 Cold & Cough</button>
+      <button class="tablinks" onclick="openCategory(event, 'stress')">😴 Stress & Sleep</button>
+      <button class="tablinks" onclick="openCategory(event, 'digestion')">🍵 Digestion</button>
+      <button class="tablinks" onclick="openCategory(event, 'skin')">🧴 Skin Care</button>
+      <button class="tablinks" onclick="openCategory(event, 'dental')">🦷 Dental</button>
+      <button class="tablinks" onclick="openCategory(event, 'respiratory')">🫁 Respiratory Health</button>
+      <button class="tablinks" onclick="openCategory(event, 'immunity')">🛡️ Immunity Boosting</button>
+    </div>
+    
+  
+  <!-- Cold & Cough Remedies -->
+  <div class="remedy-list tabcategory" id="cold" style="display:block;">
+  <div id="cold" class="tabcontent-category" style="display: block;">
+    <div class="remedy-item">
+      <h3>🌿 Tulsi Tea for Cold & Cough</h3>
+      <p>Boil tulsi leaves in water and add ginger. Drink this tea twice a day to relieve cold and cough.</p>
+    </div>
+    <div class="remedy-item">
+      <h3>🫚 Ginger Tea for Sore Throat</h3>
+      <p>Boil ginger slices in water for 10 minutes. Add honey and lemon. Drink warm to ease throat irritation.</p>
+    </div>
+  </div>
+  <div class="remedy-item">
+      <h3>🧄 Garlic with Honey</h3>
+      <p>Crush a garlic clove and mix with honey. Take once daily to fight cold symptoms.</p>
+    </div>
+    <div class="remedy-item">
+        <h3>🍯 Honey and Cinnamon</h3>
+        <p>Mix 1 tsp honey with a pinch of cinnamon powder. Take twice a day to soothe throat and reduce cough.</p>
+      </div>
+      <div class="remedy-item">
+        <h3>🌶️ Steam Inhalation</h3>
+        <p>Inhale steam from hot water with a few drops of eucalyptus oil to clear nasal congestion.</p>
+      </div>
+  </div>
+  
+  <!-- Stress & Sleep Remedies -->
+  <div class="remedy-list tabcategory" id="stress" style="display:none;">
+    <div class="remedy-item">
+      <h3>🧘‍♀️ Ashwagandha for Stress Relief</h3>
+      <p>Mix 1 tsp of Ashwagandha powder in warm milk. Drink it before bed to reduce stress and improve sleep.</p>
+    </div>
+
+    <div class="remedy-item">
+      <h3>🌼 Turmeric Milk for Immunity</h3>
+      <p>Mix 1/2 tsp turmeric in warm milk. Drink daily at night to boost immunity and reduce internal inflammation.</p>
+    </div>
+    <div class="remedy-item">
+        <h3>🛏️ Warm Milk with Nutmeg</h3>
+        <p>Add a pinch of nutmeg powder to warm milk. Drink before bed to relax and sleep better.</p>
+      </div>
+      <div class="remedy-item">
+        <h3>🌼 Lavender Oil Diffusion</h3>
+        <p>Diffuse a few drops of lavender essential oil in your room to reduce anxiety and promote calmness.</p>
+      </div>
+  </div>
+  
+  <!-- Digestion Remedies -->
+  <div class="remedy-list tabcategory" id="digestion" style="display: block;">
+    <div class="remedy-item">
+      <h3>🫚 Ajwain Water for Indigestion</h3>
+      <p>Boil 1 tsp ajwain (carom seeds) in a glass of water. Strain and drink warm to relieve gas and indigestion.</p>
+    </div>
+    <div class="remedy-item">
+      <h3>🌿 Triphala Powder for Constipation</h3>
+      <p>Mix 1 tsp Triphala powder in warm water. Drink before bed to aid digestion and relieve constipation naturally.</p>
+    </div>
+    <div class="remedy-item">
+        <h3>🌿 Jeera Water</h3>
+        <p>Boil cumin seeds in water and drink after meals to improve digestion and relieve bloating.</p>
+      </div>
+      <div class="remedy-item">
+        <h3>🫚 Ajwain with Salt</h3>
+        <p>Chew a pinch of carom seeds with black salt for instant relief from gas or indigestion.</p>
+      </div>
+  </div>
+  
+  <!-- Skin Care Remedies -->
+  <div class="remedy-list tabcategory" id="skin" style="display:block;">
+    <div class="remedy-item">
+      <h3>🌿 Neem Leaves for Skin Acne</h3>
+      <p>Crush fresh neem leaves into a paste and apply to affected areas. Leave for 15 minutes and rinse with water.</p>
+    </div>
+    <div class="remedy-item">
+      <h3>🌿 Aloe Vera Gel for Sunburn</h3>
+      <p>Apply fresh aloe vera gel directly to sunburned skin. Let it sit for 20 minutes to cool and heal the skin.</p>
+    </div>
+    <div class="remedy-item">
+        <h3>🥒 Cucumber for Dark Circles</h3>
+        <p>Place chilled cucumber slices on eyes for 10–15 minutes daily to reduce puffiness and dark circles.</p>
+      </div>
+      <div class="remedy-item">
+        <h3>🍯 Honey & Lemon Face Pack</h3>
+        <p>Mix 1 tsp honey with lemon juice, apply to face, leave for 15 minutes, then rinse. Brightens skin and reduces spots.</p>
+      </div>
+  </div>
+  
+  <!-- Dental Remedies -->
+  <div class="remedy-list tabcategory" id="dental" style="display:none;">
+    <div class="remedy-item">
+      <h3>🦷 Clove Oil for Toothache</h3>
+      <p>Dab a cotton ball in clove oil and apply it to the aching tooth. It helps relieve pain instantly.</p>
+    </div>
+    <div class="remedy-item">
+        <h3>🪥 Clove for Toothache</h3>
+        <p>Place a clove or apply clove oil on the affected tooth for instant pain relief.</p>
+      </div>
+  </div>
+
+  <!-- Respiratory Health -->
+  <div class="remedy-list tabcategory" id="respiratory" style="display:none;">
+    <div class="remedy-item">
+      <h3>🍯 Honey + Ginger Juice</h3>
+      <p>Take a spoon daily to strengthen lungs and reduce asthma symptoms.</p>
+    </div>
+    <div class="remedy-item">
+      <h3>🧴 Steam with Eucalyptus Oil</h3>
+      <p>Add a few drops to hot water and inhale steam to open airways.</p>
+    </div>
+  </div>
+
+  <!-- Immunity Boosting -->
+  <div class="remedy-list tabcategory" id="immunity" style="display:none;">
+    <div class="remedy-item">
+      <h3>🍯🌿 Chyawanprash</h3>
+      <p>Take 1 tsp daily in the morning for overall health and immunity.</p>
+    </div>
+    <div class="remedy-item">
+      <h3>🍋 Giloy Juice</h3>
+      <p>Drink regularly to purify blood and improve resistance against diseases.</p>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    function openCategory(evt, categoryName) {
+  const tabs = document.getElementsByClassName("tabcategory");
+  const buttons = document.getElementsByClassName("tablinks");
+
+  // Hide all tab categories
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].style.display = "none";
+  }
+
+  // Remove active class from all buttons
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("active");
+  }
+
+  // Show the selected category and mark the button active
+  document.getElementById(categoryName).style.display = "block";
+  evt.currentTarget.classList.add("active");
+}
+
+function openTab(evt, tabName) {
+      const tabcontent = document.getElementsByClassName("tabcontent");
+      for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      document.getElementById(tabName).style.display = "block";
+    }
+    </script>
+    
+
+<script src="script.js"></script>
+</body>
+</html>

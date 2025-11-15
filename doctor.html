@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Info & Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <nav class="navbar">
+        <a href="Herbal.html">Home</a>
+        <a href="plants.html">Herbal Plants</a>
+        <a href="remedies.html">Home Remedies</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+    <style>
+        .doctor-section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f4fdf4;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+        }
+        .doctor-section h2 {
+            text-align: center;
+            color: #2e7d32;
+        }
+        .doctor-card {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #c8e6c9;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+        .doctor-card h3 {
+            color: #1b5e20;
+        }
+        .doctor-card p {
+            margin: 5px 0;
+        }
+        .contact-form {
+            margin-top: 30px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .contact-form button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2e7d32;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="doctor-section">
+        <h2>Meet Our Herbal Health Experts</h2>
+
+        <div class="doctor-card">
+            <h3>Dr. Kedar Patil</h3>
+            <p><strong>Specialization:</strong> Homeopathy & Ayurvedic Medicine</p>
+            <p><strong>Email:</strong> kedarpatil@herbalcare.com</p>
+            <p><strong>Phone:</strong> +91 9867676521</p>
+        </div>
+
+        <div class="doctor-card">
+            <h3>Dr. Amit Sheth</h3>
+            <p><strong>Specialization:</strong> MBBS, Homeopathy & Herbal Wellness</p>
+            <p><strong>Email:</strong> amit.sheth@herbalcare.com</p>
+            <p><strong>Phone:</strong> +91 8275960639</p>
+        </div>
+
+        <div class="contact-form">
+            <h3>Send a Message</h3>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

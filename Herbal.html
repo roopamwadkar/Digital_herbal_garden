@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Herbal Garden</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <!-- Landing Page -->
+    <div class="landing-page">
+        <div class="overlay"></div>
+        <div class="welcome-content">
+            <h1>Welcome to the Digital Herbal Garden</h1>
+            <p>Explore the wonders of nature, herbal plants, and their remedies.</p>
+            <a href="#main-content" class="btn">Explore Now</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <header>
+            <div class="header-top">
+                <img src="logo1.png" alt="Virtual Herbal Garden Logo" class="header-logo">
+                <h1>Digital Herbal Garden</h1>
+            </div>
+            <p>Explore medicinal plants used in AYUSH practices</p>
+            <nav>
+                <a href="Herbal.html">Home</a>&nbsp;
+                <a href="register.html">Register/Login</a>&nbsp;
+                <a href="plants.html">Herbal Plants</a>&nbsp;
+                <a href="remedies.html">Home Remedies</a>&nbsp;
+                <a href="doctor.html">Doctor Info & Contact</a>&nbsp;
+                <a href="feedback.html">Feedback</a>&nbsp; 
+		<a href="admin_dashboard.html">Admin Panel</a>&nbsp;
+          
+            </nav>
+        </header>
+    </div>
+
+    <!-- Herbal Chatbot Start -->
+    <button onclick="toggleChat()" class="chat-toggle-btn">💬 Chat with Herbal Assistant</button>
+
+<div id="chatbot" class="chat-container">
+  <div class="chat-header">
+    Herbal Bot
+    <span onclick="toggleChat()" class="close-btn">×</span>
+  </div>
+
+  <div id="chat-body" class="chat-body"></div>
+
+  <div class="chat-input-area">
+    <input type="text" id="user-input" placeholder="Ask about herbs..." />
+    <button id="mic-btn" title="Speak">🎤</button>
+    <button class="send-btn" onclick="sendMessage()">Send</button>
+  </div>
+</div>
+  <!-- Herbal Chatbot End -->
+   <!-- Footer Start -->
+<footer class="footer">
+  <div class="footer-container">
+    <h3>About Us</h3>
+    <p>
+      The Digital Herbal Garden is your natural wellness companion. We aim to educate and promote the benefits of herbal plants and remedies in daily life. Explore trusted information on Ayurveda, medicinal herbs, and natural healing.
+    </p>
+    <p>&copy; 2025 Digital Herbal Garden. All rights reserved.</p>
+  </div>
+</footer>
+<!-- Footer End -->
+
+  <script>
+    document.getElementById("mic-btn").addEventListener("click", () => {
+      console.log("Mic button clicked!");
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert("Speech Recognition not supported in this browser.");
+        return;
+      }
+
+      const recognition = new SpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.start();
+      console.log("Recognition started");
+
+      recognition.onstart = () => {
+        document.getElementById("output").textContent = "Listening...";
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        console.log("Recognized:", transcript);
+        document.getElementById("output").textContent = transcript;
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error", event.error);
+        document.getElementById("output").textContent = "Error: " + event.error;
+      };
+    });
+
+    // Speech Recognition Setup
+let recognition;
+if ('webkitSpeechRecognition' in window) {
+    recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US'; // Change language if needed
+    recognition.continuous = false;
+    recognition.interimResults = true;
+
+    recognition.onstart = function() {
+        console.log("Listening...");
+        document.getElementById("mic-btn").classList.add("listening");
+    };
+
+    recognition.onresult = function(event) {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            transcript += event.results[i][0].transcript;
+        }
+        document.getElementById("user-input").value = transcript.trim();
+    };
+
+    recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+        document.getElementById("mic-btn").classList.remove("listening");
+    };
+
+    recognition.onend = function() {
+        console.log("Stopped listening");
+        document.getElementById("mic-btn").classList.remove("listening");
+    };
+} else {
+    alert("Speech Recognition not supported in this browser. Please use Chrome.");
+}
+
+// Start listening when mic button is clicked
+function startListening() {
+    if (recognition) {
+        recognition.start();
+    }
+}
+// Check for browser support
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    const micBtn = document.getElementById('mic-btn');
+    const userInput = document.getElementById('user-input');
+    const output = document.getElementById('output');
+
+    // Set properties for the recognition object
+    recognition.continuous = false; // Stop listening after one phrase
+    recognition.lang = 'en-US';    // Set language to English
+    recognition.interimResults = false; // Only return the final result
+
+    micBtn.addEventListener('click', () => {
+        // Start listening when the mic button is clicked
+        recognition.start();
+        micBtn.style.backgroundColor = '#E64A19'; // Change color to show it's active
+        micBtn.textContent = '...'; // Change text or icon
+        output.textContent = 'Listening...'; // Update a status message
+    });
+
+    recognition.onresult = (event) => {
+        // Get the recognized text
+        const transcript = event.results[0][0].transcript;
+        
+        // Put the text into the user input field
+        userInput.value = transcript;
+        
+        micBtn.style.backgroundColor = '#FF5722'; // Reset button color
+        micBtn.textContent = '🎤'; // Reset button icon
+        output.textContent = ''; // Clear status message
+    };
+
+    recognition.onend = () => {
+        // This event fires when the recognition service disconnects
+        micBtn.style.backgroundColor = '#FF5722';
+        micBtn.textContent = '🎤';
+        output.textContent = '';
+    };
+
+    recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        micBtn.style.backgroundColor = '#FF5722';
+        micBtn.textContent = '🎤';
+        output.textContent = 'Error during speech recognition.';
+    };
+} else {
+    // Hide the mic button if the browser doesn't support the API
+    document.getElementById('mic-btn').style.display = 'none';
+    console.warn('Web Speech API is not supported in this browser.');
+}
+  </script>
+    <script src="script.js"></script>
+</body>
+</html>

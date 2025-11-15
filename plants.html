@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <title>Digital Herbal Garden</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Herbal Plants</h1>
+        <p>Explore the details of various herbal plants</p>
+    </header>
+    <nav class="navbar">
+        <a href="Herbal.html">Home</a>
+        <a href="remedies.html">Home Remedies</a>
+        <a href="doctor.html">Doctor Info & Contact</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+      
+
+<hr></hr>
+
+<!-- Centered Search Container -->
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Enter plant name...">
+    <button onclick="searchHerb()">Search</button>
+</div>
+
+<!-- Display Search Result -->
+<div id="searchResult"></div>
+
+
+<script>
+    const herbData = {
+    tulsi: {
+        name: "Name: Tulsi (Holy Basil)",
+        usage: "Usage: Tulsi is widely used in Ayurveda for its medicinal properties. It helps in relieving stress, boosting immunity, and is used for treating respiratory conditions.",
+        image: "tulsi.jpg"
+    },
+    ashwagandha: {
+        name: "Name: Ashwagandha",
+        usage: "Usage: Ashwagandha is used in Ayurveda to reduce stress, increase energy levels, and improve concentration. It is also known to promote muscle growth.",
+        image: "ashwagandha.jpg"
+    },
+    aloevera: {
+        name: "Name: Aloe Vera",
+        usage: "Usage: Aloe vera has antioxidant and antibacterial properties. It helps with wound healing, preventing wrinkles, and managing blood sugar.",
+        image: "aloe vera.jpg"
+    },
+    neem: {
+        name: "Name: Neem",
+        usage: "Usage: Neem is used for its antibacterial, antifungal, and anti-inflammatory properties. It helps with skin problems and purifies blood.",
+        image: "neem.jpg"
+    },
+    ginger: {
+        name: "Name: Ginger",
+        usage: "Usage: Ginger is commonly used to treat nausea, digestive issues, and flu symptoms. It has anti-inflammatory and antioxidant effects.",
+        image: "ginger.jpg"
+    },
+    amla: {
+        name: "Name: Amla (Indian Gooseberry)",
+        usage: "Usage: Amla is rich in Vitamin C, boosts immunity, and is good for hair and skin health.",
+        image: "amla.jpg"
+    },
+    brahmi: {
+        name: "Name: Brahmi",
+        usage: "Usage: Brahmi is known for improving memory, reducing anxiety, and supporting cognitive function.",
+        image: "brahmi.jpg"
+    },
+    turmeric: {
+        name: "Name: Turmeric",
+        usage: "Usage: Turmeric has anti-inflammatory and antioxidant properties. Used in healing wounds and boosting overall health.",
+        image: "turmeric.jpg"
+    },
+    lemongrass: {
+        name: "Name: Lemongrass",
+        usage: "Usage: Lemongrass is used for digestion, relieving anxiety, and fighting infections.",
+        image: "lemongrass.jpg"
+    },
+    giloy: {
+        name: "Name: Giloy",
+        usage: "Usage: Giloy enhances immunity, treats chronic fever, and manages diabetes.",
+        image: "giloy.jpg"
+    },
+    betel_leaf: {
+        name: "Name: Betel Leaf (Piper betle)",
+        usage: "Usage: Aids digestion and has antibacterial properties.",
+        image: "betel_leaf.jpg"
+    },
+    bhumyamalaki: {
+        name: "Name: Bhumyamalaki (Phyllanthus niruri)",
+        usage: "Usage: Protects liver and treats jaundice and kidney stones.",
+        image: "bhumyamalaki.jpg"
+    },
+    burdock_root: {
+        name: "Name: Burdock Root (Arctium lappa)",
+        usage: "Usage: Detoxifies blood and promotes healthy skin.",
+        image: "burdock_root.jpg"
+    },
+    calendula: {
+        name: "Name: Calendula (Calendula officinalis)",
+        usage: "Usage: Heals wounds and soothes skin inflammation.",
+        image: "calendula.jpg"
+    },
+    chamomile: {
+        name: "Name: Chamomile (Matricaria chamomilla)",
+        usage: "Usage: Relieves stress and promotes sleep.",
+        image: "chamomile.jpg"
+    },
+    chitrak: {
+        name: "Name: Chitrak (Plumbago zeylanica)",
+        usage: "Usage: Boosts digestion and treats inflammation.",
+        image: "chitrak.jpg"
+    },
+    cinnamon: {
+        name: "Name: Cinnamon (Cinnamomum verum)",
+        usage: "Usage: Regulates blood sugar and has antioxidant properties.",
+        image: "cinnamon.jpg"
+    },
+    coriander: {
+        name: "Name: Coriander (Coriandrum sativum)",
+        usage: "Usage: Aids digestion and detoxifies the body.",
+        image: "coriander.jpg"
+    },
+    fennel: {
+        name: "Name: Fennel (Foeniculum vulgare)",
+        usage: "Usage: Supports digestion and relieves bloating.",
+        image: "fennel.jpg"
+    },
+    fenugreek: {
+        name: "Name: Fenugreek (Trigonella foenum-graecum)",
+        usage: "Usage: Balances blood sugar and boosts lactation.",
+        image: "fenugreek.jpg"
+    },
+    gokshura: {
+        name: "Name: Gokshura (Tribulus terrestris)",
+        usage: "Usage: Supports urinary and reproductive health.",
+        image: "gokshura.jpg"
+    },
+    haritaki: {
+        name: "Name: Haritaki (Terminalia chebula)",
+        usage: "Usage: Detoxifies the body and improves digestion.",
+        image: "haritaki.jpg"
+    },
+    jasmine: {
+        name: "Name: Jasmine (Jasminum officinale)",
+        usage: "Usage: Relieves stress and promotes relaxation.",
+        image: "jasmine.jpg"
+    },
+    jatamansi: {
+        name: "Name: Jatamansi (Nardostachys jatamansi)",
+        usage: "Usage: Improves sleep and reduces anxiety.",
+        image: "jatamansi.jpg"
+    },
+    karanja: {
+        name: "Name: Karanja (Pongamia pinnata)",
+        usage: "Usage: Treats skin disorders and has antiseptic properties.",
+        image: "karanja.jpg"
+    },
+    khus: {
+        name: "Name: Khus (Vetiveria zizanioides)",
+        usage: "Usage: Has cooling effects and calms the mind.",
+        image: "khus.jpg"
+    },
+    marshmallow: {
+        name: "Name: Marshmallow (Althaea officinalis)",
+        usage: "Usage: Soothes sore throat and inflammation.",
+        image: "marshmallow.jpg"
+    },
+    nettle: {
+        name: "Name: Nettle (Urtica dioica)",
+        usage: "Usage: Treats allergies and supports joint health.",
+        image: "nettle.jpg"
+    },
+    sesame: {
+        name: "Name: Sesame (Sesamum indicum)",
+        usage: "Usage: Rich in nutrients and good for skin and bones.",
+        image: "sesame.jpg"
+    },
+    tamarind: {
+        name: "Name: Tamarind (Tamarindus indica)",
+        usage: "Usage: Improves digestion and acts as a natural laxative.",
+        image: "tamarind.jpg"
+    },
+    shankhpushpi: {
+        name: "Name: Shankhpushpi (Convolvulus pluricaulis)",
+        usage: "Usage: Improves memory and cognitive functions.",
+        image: "shankhpushpi.jpg"
+    },
+    sunflower: {
+        name: "Name: Sunflower (Helianthus annuus)",
+        usage: "Usage: Its seeds are rich in vitamin E and support heart health.",
+        image: "sunflower.jpg"
+    },
+    tagar: {
+        name: "Name: Tagar (Valeriana wallichii)",
+        usage: "Usage: Used for anxiety, sleep disorders, and nervous conditions.",
+        image: "tagar.jpg"
+    },
+    tea_tree: {
+        name: "Name: Tea Tree (Melaleuca alternifolia)",
+        usage: "Usage: Known for its antimicrobial and antifungal properties.",
+        image: "tea_tree.jpg"
+    },
+    thyme: {
+        name: "Name: Thyme (Thymus vulgaris)",
+        usage: "Usage: Supports respiratory health and acts as an antiseptic.",
+        image: "thyme.jpg"
+    },
+    triphala: {
+        name: "Name: Triphala (Blend of 3 fruits)",
+        usage: "Usage: Supports digestion, detoxification, and immunity.",
+        image: "triphala.jpg"
+    },
+    tulbaghia: {
+        name: "Name: Tulbaghia (Tulbaghia violacea)",
+        usage: "Usage: Known for antibacterial and antifungal properties.",
+        image: "tulbaghia.jpg"
+    },
+    turmeric_leaf: {
+        name: "Name: Turmeric Leaf (Curcuma longa)",
+        usage: "Usage: Used in traditional medicine for its antiseptic and aromatic properties.",
+        image: "turmeric_leaf.jpg"
+    },
+    urad: {
+        name: "Name: Urad (Vigna mungo)",
+        usage: "Usage: Boosts bone health and helps in digestion.",
+        image: "urad.jpg"
+    },
+    vach: {
+        name: "Name: Vach (Acorus calamus)",
+        usage: "Usage: Enhances speech and treats respiratory issues.",
+        image: "vach.jpg"
+    },
+    vanilla: {
+        name: "Name: Vanilla (Vanilla planifolia)",
+        usage: "Usage: Known for its antioxidant and anti-inflammatory properties.",
+        image: "vanilla.jpg"
+    },
+    vidarikand: {
+        name: "Name: Vidarikand (Pueraria tuberosa)",
+        usage: "Usage: Acts as a rejuvenator and strengthens immunity.",
+        image: "vidarikand.jpg"
+    },
+    wheatgrass: {
+        name: "Name: Wheatgrass (Triticum aestivum)",
+        usage: "Usage: Detoxifies liver, boosts metabolism, and builds immunity.",
+        image: "wheatgrass.jpg"
+    },
+    white_peony: {
+        name: "Name: White Peony (Paeonia lactiflora)",
+        usage: "Usage: Supports hormonal balance and reduces inflammation.",
+        image: "white_peony.jpg"
+    },
+    yarrow: {
+        name: "Name: Yarrow (Achillea millefolium)",
+        usage: "Usage: Promotes wound healing and reduces menstrual discomfort.",
+        image: "yarrow.jpg"
+    },
+    yastimadhu: {
+        name: "Name: Yastimadhu (Glycyrrhiza glabra)",
+        usage: "Usage: Soothes respiratory and digestive disorders.",
+        image: "yastimadhu.jpg"
+    },
+    yellow_dock: {
+        name: "Name: Yellow Dock (Rumex crispus)",
+        usage: "Usage: Detoxifies the liver and supports digestion.",
+        image: "yellow_dock.jpg"
+    },
+    zedoary: {
+        name: "Name: Zedoary (Curcuma zedoaria)",
+        usage: "Usage: Treats digestive disorders and boosts immunity.",
+        image: "zedoary.jpg"
+    },
+    bael: {
+        name: "Name: Bael (Aegle marmelos)",
+        usage: "Usage: Treats diarrhea and supports digestion.",
+        image: "bael.jpg"
+    },
+    basil_leaf: {
+        name: "Name: Basil Leaf (Ocimum basilicum)",
+        usage: "Usage: Fights infections, relieves headaches, and boosts mood.",
+        image: "basil_leaf.jpg"
+    },
+    kutki: {
+        name: "Name: Kutki (Picrorhiza kurroa)",
+        usage: "Usage: Supports liver health and treats fever.",
+        image: "kutki.jpg"
+    },
+    lavender: {
+        name: "Name: Lavender (Lavandula angustifolia)",
+        usage: "Usage: Reduces anxiety and improves sleep quality.",
+        image: "lavender.jpg"
+    },
+    licorice: {
+        name: "Name: Licorice (Glycyrrhiza glabra)",
+        usage: "Usage: Soothes sore throat and supports adrenal health.",
+        image: "licorice.jpg"
+    },
+    long_pepper: {
+        name: "Name: Long Pepper (Piper longum)",
+        usage: "Usage: Used for respiratory and digestive issues.",
+        image: "long_pepper.jpg"
+    },
+    manjistha: {
+        name: "Name: Manjistha (Rubia cordifolia)",
+        usage: "Usage: Detoxifies blood and promotes skin health.",
+        image: "manjistha.jpg"
+    },
+    moringa: {
+        name: "Name: Moringa (Moringa oleifera)",
+        usage: "Usage: Rich in nutrients and antioxidants, boosts energy.",
+        image: "moringa.jpg"
+    },
+    mulethi: {
+        name: "Name: Mulethi (Glycyrrhiza glabra)",
+        usage: "Usage: Acts as a throat soother and anti-inflammatory.",
+        image: "mulethi.jpg"
+    },
+    mustard: {
+        name: "Name: Mustard (Brassica juncea)",
+        usage: "Usage: Used in massage oils for muscle relief.",
+        image: "mustard.jpg"
+    },
+    myrobalan: {
+        name: "Name: Myrobalan (Terminalia bellirica)",
+        usage: "Usage: Supports digestion and treats respiratory issues.",
+        image: "myrobalan.jpg"
+    },
+    nutmeg: {
+        name: "Name: Nutmeg (Myristica fragrans)",
+        usage: "Usage: Aids sleep and improves digestion.",
+        image: "nutmeg.jpg"
+    },
+    onion: {
+        name: "Name: Onion (Allium cepa)",
+        usage: "Usage: Reduces inflammation and supports heart health.",
+        image: "onion.jpg"
+    },
+    patchouli: {
+        name: "Name: Patchouli (Pogostemon cablin)",
+        usage: "Usage: Used in aromatherapy to ease stress.",
+        image: "patchouli.jpg"
+    },
+    peppermint: {
+        name: "Name: Peppermint (Mentha piperita)",
+        usage: "Usage: Relieves headaches and nausea.",
+        image: "peppermint.jpg"
+    },
+    punarnava: {
+        name: "Name: Punarnava (Boerhavia diffusa)",
+        usage: "Usage: Supports kidney health and reduces swelling.",
+        image: "punarnava.jpg"
+    },
+    raktachandan: {
+        name: "Name: Raktachandan (Pterocarpus santalinus)",
+        usage: "Usage: Beneficial for skin conditions and cooling effect.",
+        image: "raktachandan.jpg"
+    },
+    rosemary: {
+        name: "Name: Rosemary (Rosmarinus officinalis)",
+        usage: "Usage: Improves memory and concentration.",
+        image: "rosemary.jpg"
+    },
+    saffron: {
+        name: "Name: Saffron (Crocus sativus)",
+        usage: "Usage: Enhances complexion and mood.",
+        image: "saffron.jpg"
+    },
+    sage: {
+        name: "Name: Sage (Salvia officinalis)",
+        usage: "Usage: Supports memory and reduces inflammation.",
+        image: "sage.jpg"
+    },
+    sarpagandha: {
+        name: "Name: Sarpagandha (Rauvolfia serpentina)",
+        usage: "Usage: Treats hypertension and insomnia.",
+        image: "sarpagandha.jpg"
+    },
+    shatavari: {
+        name: "Name: Shatavari (Asparagus racemosus)",
+        usage: "Usage: Promotes female reproductive health and vitality.",
+        image: "shatavari.jpg"
+    },
+    bhumyamalaki: {
+        name: "Name: Bhumyamalaki (Phyllanthus niruri)",
+        usage: "Usage: Used for liver protection and to treat jaundice.",
+        image: "bhumyamalaki.jpg"
+    },
+    calendula: {
+        name: "Name: Calendula (Calendula officinalis)",
+        usage: "Usage: Known for healing wounds and soothing skin irritations.",
+        image: "calendula.jpg"
+    },
+    cardamom: {
+        name: "Name: Cardamom (Elettaria cardamomum)",
+        usage: "Usage: Aids digestion and freshens breath.",
+        image: "cardamom.jpg"
+    },
+    cinnamon: {
+        name: "Name: Cinnamon (Cinnamomum verum)",
+        usage: "Usage: Helps regulate blood sugar and has antibacterial properties.",
+        image: "cinnamon.jpg"
+    },
+    clove: {
+        name: "Name: Clove (Syzygium aromaticum)",
+        usage: "Usage: Relieves toothache and has antiseptic properties.",
+        image: "clove.jpg"
+    },
+    coleus: {
+        name: "Name: Coleus (Coleus forskohlii)",
+        usage: "Usage: Used for heart health and fat reduction.",
+        image: "coleus.jpg"
+    },
+    coriander: {
+        name: "Name: Coriander (Coriandrum sativum)",
+        usage: "Usage: Aids in digestion and detoxification.",
+        image: "coriander.jpg"
+    },
+    dandelion: {
+        name: "Name: Dandelion (Taraxacum officinale)",
+        usage: "Usage: Supports liver function and acts as a diuretic.",
+        image: "dandelion.jpg"
+    },
+    fenugreek: {
+        name: "Name: Fenugreek (Trigonella foenum-graecum)",
+        usage: "Usage: Helps control blood sugar and boost milk production.",
+        image: "fenugreek.jpg"
+    },
+    fennel: {
+        name: "Name: Fennel (Foeniculum vulgare)",
+        usage: "Usage: Relieves bloating and aids digestion.",
+        image: "fennel.jpg"
+    },
+    gokshura: {
+        name: "Name: Gokshura (Tribulus terrestris)",
+        usage: "Usage: Used to enhance libido and urinary tract health.",
+        image: "gokshura.jpg"
+    },
+    gotu_kola: {
+        name: "Name: Gotu Kola (Centella asiatica)",
+        usage: "Usage: Enhances memory and promotes skin healing.",
+        image: "gotu_kola.jpg"
+    },
+    guduchi: {
+        name: "Name: Guduchi (Tinospora cordifolia)",
+        usage: "Usage: Boosts immunity and reduces fever.",
+        image: "guduchi.jpg"
+    },
+    haritaki: {
+        name: "Name: Haritaki (Terminalia chebula)",
+        usage: "Usage: Improves digestion and detoxifies the body.",
+        image: "haritaki.jpg"
+    },
+    hibiscus: {
+        name: "Name: Hibiscus (Hibiscus rosa-sinensis)",
+        usage: "Usage: Promotes hair growth and lowers blood pressure.",
+        image: "hibiscus.jpg"
+    },
+    indian_sarsaparilla: {
+        name: "Name: Indian Sarsaparilla (Hemidesmus indicus)",
+        usage: "Usage: Used as a blood purifier and coolant.",
+        image: "indian_sarsaparilla.jpg"
+    },
+    jatamansi: {
+        name: "Name: Jatamansi (Nardostachys jatamansi)",
+        usage: "Usage: Calms the mind and promotes restful sleep.",
+        image: "jatamansi.jpg"
+    },
+    kalmegh: {
+        name: "Name: Kalmegh (Andrographis paniculata)",
+        usage: "Usage: Used to treat infections and fever.",
+        image: "kalmegh.jpg"
+    },
+    kamal: {
+        name: "Name: Kamal (Nelumbo nucifera)",
+        usage: "Usage: Soothes nerves and balances the body's systems.",
+        image: "kamal.jpg"
+    },
+    karela: {
+        name: "Name: Karela (Momordica charantia)",
+        usage: "Usage: Regulates blood sugar and aids in weight loss.",
+        image: "karela.jpg"
+    },
+    mint: {
+        name: "Name: Mint (Mentha)",
+        usage: "Usage: Soothes the stomach and freshens breath.",
+        image: "mint.jpg"
+    },
+    abscess_root: {
+        name: "Name: Abscess Root (Polemonium reptans)",
+        usage: "Usage: Used to reduce fever, inflammation, and cough.",
+        image: "abscess_root.jpg"
+    },
+    amargo: {
+        name: "Name: Amargo (Quassia amara)",
+        usage: "Usage: Traditionally used to treat digestive issues and as a topical remedy for skin conditions.",
+        image: "amargo.jpg"
+    },
+    arnica: {
+        name: "Name: Arnica (Arnica montana)",
+        usage: "Usage: Used as an anti-inflammatory and for osteoarthritis. Not recommended for internal use due to toxicity.",
+        image: "arnica.jpg"
+    },
+    asafoetida: {
+        name: "Name: Asafoetida (Ferula assa-foetida)",
+        usage: "Usage: May be useful for IBS, high cholesterol, and breathing problems.",
+        image: "asafoetida.jpg"
+    },
+    ashoka_tree: {
+        name: "Name: Ashoka Tree (Saraca indica)",
+        usage: "Usage: Used in Ayurvedic traditions to treat gynecological disorders and combat swelling.",
+        image: "ashoka_tree.jpg"
+    },
+    asthma_plant: {
+        name: "Name: Asthma Plant (Euphorbia hirta)",
+        usage: "Usage: Traditionally used in Asia to treat bronchitic asthma and laryngeal spasm.",
+        image: "asthma_plant.jpg"
+    },
+    astragalus: {
+        name: "Name: Astragalus (Astragalus propinquus)",
+        usage: "Usage: Used in traditional Chinese medicine to strengthen the immune system and treat hepatitis.",
+        image: "astragalus.jpg"
+    },
+    avaram_senna: {
+        name: "Name: Avaram Senna (Senna auriculata)",
+        usage: "Usage: Used against fevers, diabetes, urinary system diseases, and constipation.",
+        image: "avaram_senna.jpg"
+    },
+    bay_laurel: {
+        name: "Name: Bay Laurel (Laurus nobilis)",
+        usage: "Usage: Extracts used as astringents and salves for open wounds; essential oil used in massage therapy.",
+        image: "bay_laurel.jpg"
+    },
+    belladonna: {
+        name: "Name: Belladonna (Atropa belladonna)",
+        usage: "Usage: Historically used as a sedative and for various treatments; highly toxic.",
+        image: "belladonna.jpg"
+    }
+
+    // Add more as needed
+};
+
+function searchHerb() {
+    const input = document.getElementById('searchInput').value.trim().toLowerCase();
+    const resultDiv = document.getElementById('searchResult');
+    resultDiv.innerHTML = '';
+
+    if (herbData[input]) {
+        const herb = herbData[input];
+
+        resultDiv.innerHTML = `
+            <div class="herb-card">
+                <img src="${herb.image}" alt="${herb.name}">
+                <h3>${herb.name}</h3>
+                <p>${herb.usage}</p>
+            </div>
+        `;
+    } else {
+        resultDiv.innerHTML = `<p style="text-align:center; color: red;">No plant found with the name "${input}"</p>`;
+    }
+}
+
+</script>

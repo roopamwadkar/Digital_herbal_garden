@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Herbal Remedies Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2fff5;
+            text-align: center;
+            padding: 40px;
+        }
+        canvas {
+            max-width: 700px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Digital Herbal Garden – Usage Analysis</h1>
+    <p>Visualizing popular herbs searched by users</p>
+
+    <canvas id="herbChart"></canvas>
+
+    <script>
+        const ctx = document.getElementById('herbChart').getContext('2d');
+
+        const herbChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Turmeric', 'Ginger', 'Mint', 'Tulsi', 'Aloe Vera', 'Neem'],
+                datasets: [{
+                    label: 'Number of Searches',
+                    data: [35, 22, 18, 45, 27, 20],
+                    backgroundColor: [
+                        '#f4c542', '#e88c36', '#7cd957', '#42b883', '#80d3d3', '#a6ce39'
+                    ],
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Search Frequency'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Most Searched Herbs on Website'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
